@@ -7,3 +7,11 @@
 meteor-platform
 autopublish
 insecure
+johnantoni:meteor-normalize
+accounts-facebook
+accounts-ui
+angularui:angular-ui-router
+natestrauser:font-awesome
+urigo:angular
+fourseven:scss
+meteorhacks:fast-render
