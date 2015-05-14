@@ -1,4 +1,4 @@
-angular.module('snapify').factory('audio', function ($document) {
+angular.module('snapify').factory('audio', ['$document',function ($document) {
     var audioElement = $document[0].createElement('audio'); // <-- Magic trick here
     return {
         audioElement: audioElement,
@@ -9,4 +9,4 @@ angular.module('snapify').factory('audio', function ($document) {
             }
         }
     }
-});
+}]);
