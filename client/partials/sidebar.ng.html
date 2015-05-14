@@ -1,9 +1,12 @@
 <div class="sidebar">
-    <p>
-    Snapify
+    <p class="Snapify">
+        Snapify
     </p>
+
     <p>With love from</p>
+
     <div ng-repeat="song in receivedSongs">
-        <a href="#"><img ng-src="{{song.from.picture}}" style="width:100px; height:100px; margin-top:30px; border-radius:50px;"></a>
+        <a href="#"><img ng-src="{{song.from.picture}}"
+                         style="width:100px; height:100px; margin-top:30px; border-radius:50px;"></a>
     </div>
 </div>
