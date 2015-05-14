@@ -1,4 +1,6 @@
 <div ng-show="$root.currentUser.username" ng-include="'client/partials/sidebar.ng.html'"></div>
+<div id ="content">
 <div ng-hide="$root.currentUser" ng-include="'client/partials/login.ng.html'"></div>
 <div ng-hide="$root.currentUser.username || !$root.currentUser" ng-include="'client/partials/setUsername.ng.html'"></div>
 <div ng-show="$root.currentUser.username" ng-include="'client/partials/searchSong.ng.html'"></div>
+</div>

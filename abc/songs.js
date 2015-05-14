@@ -5,7 +5,7 @@ Meteor.methods({
        Songs.insert({
             toId: toId,
            songId: songId,
-           from: {name: Meteor.user.username, Meteor.user.profile.picture}
+           from: {name: Meteor.user.username, picture: Meteor.user.profile.picture}
         });
     }
 });
