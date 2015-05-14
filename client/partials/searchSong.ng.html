@@ -2,8 +2,10 @@
     <div class="row">
         <div class="col-lg-offset-4 col-lg-4" id="searchSong"
              style="margin-top:15vh; background-color:rgba(230,230,230,0.3)">
-            <input type="text" ng-model="searchTrack" class="form-control">
-            <button ng-click="searchTracks(searchTrack)"><i class="fa fa-spotify"></i> Search</button>
+            <h1 class="title text-center">Share it!</h1>
+            <input type="text" placeholer="Search for songs" ng-model="searchTrack" class="form-control">
+
+            <button ng-click="searchTracks(searGchTrack)"><i class="fa fa-spotify"></i> Search</button>
             <div class="" style="border-top: solid black 1px;" ng-repeat="track in tracks.tracks.items">
                 <div>
                     <div style="display:block">
@@ -14,7 +16,7 @@
                             {{track.name}}
                         </a>
                         <div class="meta">
-                            <span class="cinema">{{track.artists[0].name}}</span>
+                            <span class="cinema">{{track.artists[0].names}}</span>
                         </div>
                     </div>
                 </div>
