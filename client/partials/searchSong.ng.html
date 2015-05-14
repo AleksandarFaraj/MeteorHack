@@ -2,7 +2,6 @@
     <div class="row">
         <div class="col-lg-offset-4 col-lg-4" id="searchSong"
              style="margin-top:15vh; background-color:rgba(230,230,230,0.3)">
-
             <input type="text" ng-model="searchTrack" class="form-control">
             <button ng-click="searchTracks(searchTrack)"><i class="fa fa-spotify"></i> Search</button>
             <div class="" style="border-top: solid black 1px;" ng-repeat="track in tracks.tracks.items">
@@ -11,7 +10,7 @@
                         <img style="height:6vmax;width:6vmax" ng-src="{{track.album.images[0].url}}">
                     </div>
                     <div class="content">
-                        <a class="header">
+                        <a class="header" href="#" ng-click="sendTrack(track.id)">
                             {{track.name}}
                         </a>
                         <div class="meta">

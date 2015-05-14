@@ -29,4 +29,7 @@ function AppController($scope, $meteor,Spotify) {
             console.log(data);
         });
     }
+    $scope.sendTrack=function(trackId) {
+        $scope.selectedTrack = trackId;
+    }
 }
