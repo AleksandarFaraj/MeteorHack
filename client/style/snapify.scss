@@ -1,0 +1,19 @@
+.img {
+    background-position: center center, center center;
+    background-clip: border-box, border-box;
+    background-origin: padding-box, padding-box;
+    background-size: cover;
+    background-repeat: no-repeat, no-repeat;
+    overflow: hidden;
+    position:relative;
+    top:0; right:0;
+    bottom:0; left:0;
+}
+.background {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3)), url('http://i.ytimg.com/vi/91VHLwWQi3I/maxresdefault.jpg');
+}
+body {
+  @extend .img, .background;
+  min-width: 100vw;
+  min-height: 100vh;
+}
