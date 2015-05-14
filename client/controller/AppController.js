@@ -11,5 +11,5 @@ function AppController($scope) {
     vm.title = 'AppController';
 
     ////////////////
-
+    console.log('hello world');
 }
