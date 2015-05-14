@@ -2,10 +2,10 @@ angular
     .module('snapify')
     .controller('AppController', AppController);
 
-AppController.$inject = ['$scope', '$meteor','Spotify'];
+AppController.$inject = ['$scope', '$meteor','Spotify','$rootScope'];
 
 /* @ngInject */
-function AppController($scope, $meteor,Spotify) {
+function AppController($scope, $meteor,Spotify,$rootScope) {
     /* jshint validthis: true */
     var vm = this;
     vm.title = 'AppController';
@@ -32,4 +32,12 @@ function AppController($scope, $meteor,Spotify) {
     $scope.sendTrack=function(trackId) {
         $scope.selectedTrack = trackId;
     }
+    $scope.sendSong=function(toId) {
+        $meteor.call('sendSong',toId,$scope.selectedTrack);
+        $scope.selectedTrack=null;
+    }
+    $scope.receivedSongs = $meteor.collection(function () {
+        console.log($rootScope.currentUser._id);
+        return Songs.find({toId:$rootScope.currentUser._id});
+    });
 }
