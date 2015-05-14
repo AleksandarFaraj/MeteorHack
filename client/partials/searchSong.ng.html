@@ -7,10 +7,10 @@
             <button ng-click="searchTracks(searchTrack)"><i class="fa fa-spotify"></i> Search</button>
             <div class="" style="border-top: solid black 1px;" ng-repeat="track in tracks.tracks.items">
                 <div>
-                    <div class="pull-left">
+                    <div style="display:block">
                         <img style="height:6vmax;width:6vmax" ng-src="{{track.album.images[0].url}}">
                     </div>
-                    <div class="content" style="padding-top:1vmax">
+                    <div class="content">
                         <a class="header">
                             {{track.name}}
                         </a>
