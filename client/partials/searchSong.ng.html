@@ -1,10 +1,24 @@
 <div class="container">
     <div class="row">
-        <div class="col-lg-offset-4 col-lg-4" id="searchSong" style="margin-top:15vh; background-color:rgba(230,230,230,0.3)">
+        <div class="col-lg-offset-4 col-lg-4" id="searchSong"
+             style="margin-top:15vh; background-color:rgba(230,230,230,0.3)">
 
-            <input type="text" ng-model="searchSong" class="form-control"><button><i class="fa fa-spotify"></i> Search</button>
-            <div class="">
-
+            <input type="text" ng-model="searchTrack" class="form-control">
+            <button ng-click="searchTracks(searchTrack)"><i class="fa fa-spotify"></i> Search</button>
+            <div class="" style="border-top: solid black 1px;" ng-repeat="track in tracks.tracks.items">
+                <div>
+                    <div class="pull-left">
+                        <img style="height:6vmax;width:6vmax" ng-src="{{track.album.images[0].url}}">
+                    </div>
+                    <div class="content" style="padding-top:1vmax">
+                        <a class="header">
+                            {{track.name}}
+                        </a>
+                        <div class="meta">
+                            <span class="cinema">{{track.artists[0].name}}</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 

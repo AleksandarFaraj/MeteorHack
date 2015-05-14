@@ -23,9 +23,10 @@ function AppController($scope, $meteor,Spotify) {
     $scope.friends = $meteor.collection(function () {
         return Meteor.users.find({});
     });
-    $scope.searchSongs = function(search) {
-        Spotify.search(search, 'track').then(function(){
-
+    $scope.searchTracks = function(search) {
+        Spotify.search(search, 'track').then(function(data){
+            $scope.tracks = data;
+            console.log(data);
         });
     }
 }
