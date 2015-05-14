@@ -16,5 +16,9 @@ function AppController($scope,$meteor) {
         $meteor.loginWithFacebook({},function(){
             console.log('Logged in');
         });
-    }
+    };
+    $scope.setUsername = function(username) {
+        $meteor.call('setUsername',username);
+    };
+
 }
