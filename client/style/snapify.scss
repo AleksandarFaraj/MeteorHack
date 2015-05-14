@@ -1,3 +1,4 @@
+@import url(http://fonts.googleapis.com/css?family=Raleway);
 .img {
     background-position: center center, center center;
     background-clip: border-box, border-box;
@@ -16,6 +17,7 @@ body {
   @extend .img, .background;
   min-width: 100vw;
   min-height: 100vh;
+  font-family:Raleway;
 }
 h1.title {
   color:#FFF;
