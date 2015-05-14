@@ -3,7 +3,10 @@
     <base href="/">
 </head>
 <body ng-app="snapify">
+    {{>loginButtons}}
     <div ng-controller='AppController'>
+        <div ng-include="'client/templates/main.ng.html'">
 
+        </div>
     </div>
 </body>
