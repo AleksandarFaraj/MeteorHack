@@ -1,6 +1,6 @@
 @import url(http://fonts.googleapis.com/css?family=Raleway);
 .img {
-    background-position: center center, center center;
+    background-position: center;
     background-clip: border-box, border-box;
     background-origin: padding-box, padding-box;
     background-size: cover;
@@ -9,6 +9,12 @@
     position:relative;
     top:0; right:0;
     bottom:0; left:0;
+}
+.center {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .background {
     background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3)), url('http://i.ytimg.com/vi/91VHLwWQi3I/maxresdefault.jpg');

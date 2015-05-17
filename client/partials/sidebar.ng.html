@@ -1,13 +1,16 @@
 <div class="sidebar">
-    <div class ="sidebarText">
-    <p class="Snapify">
-        Snapify
-    </p>
-    <p class="Love">With love from</p>
-    </div>
+    <div class="sidebarText">
+        <p class="Snapify">
+            Snapify
+        </p>
 
+        <p class="Love">With love from</p>
+    </div>
     <div ng-repeat="song in receivedSongs">
-        <a href="#" ng-click="play(song)"><img ng-src="{{song.from.picture}}"
-                         style="width:100px; height:100px; margin-top:30px; border-radius:50px;"></a>
+        <a href="#" ng-click="play(song);"><img ng-src="{{song.from.picture}}" style="width:100px; height:100px; margin-top:30px; border-radius:50px;"></a>
     </div>
 </div>
+<div style="position:absolute; bottom:0">
+    <button class="btn" style="width:100%" ng-click="logout()">Sign out</button>
+</div>
+<div ng-include="'client/partials/playingsong.ng.html'" ng-show="playingsong"></div>

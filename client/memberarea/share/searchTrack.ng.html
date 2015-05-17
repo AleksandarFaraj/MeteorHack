@@ -6,7 +6,7 @@
             <input type="text" placeholer="Search for songs" ng-model="searchTrack" class="form-control">
 
             <button ng-click="searchTracks(searchTrack)"><i class="fa fa-spotify"></i> Search</button>
-            <div class="" style="border-top: solid black 1px;" ng-repeat="track in tracks.tracks.items">
+            <div style="border-top: solid black 1px;" ng-repeat="track in tracks.tracks.items">
                 <div>
                     <div style="display:block">
                         <img style="height:6vmax;width:6vmax" ng-src="{{track.album.images[0].url}}">

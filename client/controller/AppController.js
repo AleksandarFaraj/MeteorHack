@@ -2,24 +2,23 @@ angular
     .module('snapify')
     .controller('AppController', AppController);
 
-AppController.$inject = ['$scope', '$meteor', 'Spotify', '$rootScope', 'audio'];
+AppController.$inject = ['$scope', '$meteor', 'Spotify', '$rootScope', 'audio', '$state'];
 
 /* @ngInject */
-function AppController($scope, $meteor, Spotify, $rootScope, audio) {
+function AppController($scope, $meteor, Spotify, $rootScope, audio, $state) {
     /* jshint validthis: true */
     var vm = this;
     vm.title = 'AppController';
-
+    console.log($meteor);
     ////////////////
-    console.log('hello world');
-    $scope.login = function () {
-        $meteor.loginWithFacebook({}, function () {
-            console.log('Logged in');
-        });
+    $scope.logout=function(){
+      $meteor.logout();
+        $state.go("login");
     };
-    $scope.setUsername = function (username) {
-        $meteor.call('setUsername', username);
-    };
+    $scope.receivedSongs = $meteor.collection(function () {
+        console.log($rootScope.currentUser._id);
+        return Songs.find({toId: $rootScope.currentUser._id});
+    });
     $scope.friends = $meteor.collection(function () {
         return Meteor.users.find({});
     });
@@ -28,23 +27,35 @@ function AppController($scope, $meteor, Spotify, $rootScope, audio) {
             $scope.tracks = data;
             console.log(data);
         });
-    }
+    };
     $scope.sendTrack = function (trackId) {
         $scope.selectedTrack = trackId;
-    }
+        $state.go('memberarea.share.selectFriend');
+    };
     $scope.sendSong = function (toId) {
         $meteor.call('sendSong', toId, $scope.selectedTrack);
+        $state.go('memberarea.share.searchTrack');
         $scope.selectedTrack = null;
     };
-    if ($rootScope.currentUser)
-        $scope.receivedSongs = $meteor.collection(function () {
-            console.log($rootScope.currentUser._id);
-            return Songs.find({toId: $rootScope.currentUser._id});
-        });
+    $scope.stopPlaying = function() {
+        delete $scope.playingsong;
+    };
     $scope.play = function (song) {
+
         Spotify.getTrack(song.songId).then(function (track) {
-            audio.play(track.preview_url);
-            Songs.remove({_id: song._id});
-        });
+                console.log(track);
+                Spotify.getArtist(track.artists[0].id).then(function (artist) {
+                    $scope.playingsong = {
+                        artist: artist.name,
+                        track: track.name,
+                        image: artist.images[0].url
+                    };
+                    audio.play(track.preview_url);
+                    Songs.remove({_id: song._id});
+                });
+
+            }
+        )
+        ;
     }
 }

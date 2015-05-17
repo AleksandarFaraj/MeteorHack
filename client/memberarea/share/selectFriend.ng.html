@@ -3,9 +3,11 @@
         <div class="col-lg-offset-4 col-lg-4"
              style="margin-top:15vh; background-color:rgba(230,230,230,0.3)">
             <h1 class="title text-center">Share it!</h1>
+
             <div ng-repeat="friend in friends">
-                <a href="#" ng-click="sendSong(friend._id)"> <img ng-src="{{friend.profile.picture}}" style="width:100px;height:100px;">
-                    {{friend.username}}
+                <a href="#" ng-click="sendSong(friend._id)"> <img ng-src="{{friend.profile.picture}}"
+                                                                  style="width:100px;height:100px;">
+                    {{friend.profile.name}}
                 </a>
             </div>
         </div>
