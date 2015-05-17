@@ -2,23 +2,25 @@ angular
     .module('snapify')
     .controller('AppController', AppController);
 
-AppController.$inject = ['$scope', '$meteor', 'Spotify', '$rootScope', 'audio', '$state'];
+AppController.$inject = ['$scope', '$meteor', 'Spotify', '$rootScope', 'audio', '$state', '$timeout'];
 
 /* @ngInject */
-function AppController($scope, $meteor, Spotify, $rootScope, audio, $state) {
+function AppController($scope, $meteor, Spotify, $rootScope, audio, $state, $timeout) {
     /* jshint validthis: true */
     var vm = this;
     vm.title = 'AppController';
     console.log($meteor);
     ////////////////
-    $scope.logout=function(){
-      $meteor.logout();
+    $scope.logout = function () {
+        $meteor.logout();
         $state.go("login");
     };
-    $scope.receivedSongs = $meteor.collection(function () {
-        console.log($rootScope.currentUser._id);
-        return Songs.find({toId: $rootScope.currentUser._id});
-    });
+    if ($rootScope.currentUser) {
+        $scope.receivedSongs = $meteor.collection(function () {
+            console.log($rootScope.currentUser._id);
+            return Songs.find({toId: $rootScope.currentUser._id});
+        });
+    }
     $scope.friends = $meteor.collection(function () {
         return Meteor.users.find({});
     });
@@ -37,7 +39,7 @@ function AppController($scope, $meteor, Spotify, $rootScope, audio, $state) {
         $state.go('memberarea.share.searchTrack');
         $scope.selectedTrack = null;
     };
-    $scope.stopPlaying = function() {
+    $scope.stopPlaying = function () {
         delete $scope.playingsong;
         audio.audioElement.pause();
         audio.audioElement.currentTime = 0;
@@ -47,16 +49,21 @@ function AppController($scope, $meteor, Spotify, $rootScope, audio, $state) {
         Spotify.getTrack(song.songId).then(function (track) {
                 console.log(track);
                 Spotify.getArtist(track.artists[0].id).then(function (artist) {
-                    $scope.playingsong = {
-                        artist: artist.name,
-                        track: track.name,
-                        image: artist.images[0].url
-                    };
+
                     audio.play(track.preview_url);
-                    audio.audioElement.addEventListener("ended", function() {
+                    audio.audioElement.addEventListener("ended", function () {
                         $scope.stopPlaying();
                     }, true);
                     Songs.remove({_id: song._id});
+
+                    $scope.playingsong = {
+                        artist: artist.name,
+                        track: track.name,
+                        images: artist.images,
+                        audio: audio
+                    };
+
+
                 });
 
             }

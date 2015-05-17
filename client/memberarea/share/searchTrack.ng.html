@@ -1,11 +1,13 @@
 <div class="container">
     <div class="row">
-        <div class="col-lg-offset-4 col-lg-4" id="searchSong"
+        <div class="col-lg-offset-3 col-lg-6" id="searchSong"
              style="margin-top:15vh; background-color:rgba(230,230,230,0.3)">
-            <h1 class="title text-center">Search it!</h1>
-            <input type="text" placeholer="Search for songs" ng-model="searchTrack" class="form-control">
+            <h1 class="title text-center"><i class="fa fa-spotify"></i> Search It</h1>
 
-            <button ng-click="searchTracks(searchTrack)"><i class="fa fa-spotify"></i> Search</button>
+            <form ng-submit="searchTracks(searchTrack)">
+                <input autofocus type="text" placeholer="Search for songs" ng-model="searchTrack" class="form-control">
+            </form>
+
             <div style="border-top: solid black 1px;" ng-repeat="track in tracks.tracks.items">
                 <div>
                     <div style="display:block">
@@ -15,6 +17,7 @@
                         <a class="header" href="#" ng-click="sendTrack(track.id)">
                             {{track.name}}
                         </a>
+
                         <div class="meta">
                             <span class="cinema">{{track.artists[0].names}}</span>
                         </div>
@@ -22,6 +25,5 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>
