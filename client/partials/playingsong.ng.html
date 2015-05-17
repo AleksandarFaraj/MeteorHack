@@ -1,9 +1,10 @@
 <div class="img"
-     style="position:absolute; top:0; background-image:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)),url({{playingsong.images[0].url}}); height:100vh; width:100vw; z-index:1000; color:#fff"
+     style="position:absolute; top:0; background-image:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)),url({{playingsong.image}}); height:100vh; width:100vw; z-index:1000; color:#fff"
      ng-click="stopPlaying()">
+    <img ng-src="{{playingsong.images[playingsong.img].url}}">
     <div class="center text-center">
         <h1> {{playingsong.track}}</h1>
         <h1>{{playingsong.artist}}</h1>
-        {{playingsong.audio.currentTime}}
+
     </div>
 </div>

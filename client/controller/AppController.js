@@ -50,7 +50,9 @@ function AppController($scope, $meteor, Spotify, $rootScope, audio, $state, $tim
                 console.log(track);
                 Spotify.getArtist(track.artists[0].id).then(function (artist) {
 
-                    audio.play(track.preview_url);
+                    audio.play(track.preview_url,function(){
+                        $scope.stopPlaying();
+                    });
                     audio.audioElement.addEventListener("ended", function () {
                         $scope.stopPlaying();
                     }, true);
@@ -59,11 +61,9 @@ function AppController($scope, $meteor, Spotify, $rootScope, audio, $state, $tim
                     $scope.playingsong = {
                         artist: artist.name,
                         track: track.name,
-                        images: artist.images,
+                        image: artist.images[0].url,
                         audio: audio
                     };
-
-
                 });
 
             }
