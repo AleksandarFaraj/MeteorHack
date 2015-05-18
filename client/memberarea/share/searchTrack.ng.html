@@ -9,20 +9,19 @@
             </form>
 
             <div style="border-top: solid black 1px;" ng-repeat="track in tracks.tracks.items">
-                <div>
+
+                <a class="header" href="#" ng-click="sendTrack(track.id)">
                     <div style="display:block">
-                        <img style="height:6vmax;width:6vmax" ng-src="{{track.album.images[0].url}}">
+                        <img style="height:6vmax;width:6vmax;" ng-src="{{track.album.images[0].url}}">
                     </div>
                     <div class="content">
-                        <a class="header" href="#" ng-click="sendTrack(track.id)">
-                            {{track.name}}
-                        </a>
-
+                        {{track.name}}
                         <div class="meta">
-                            <span class="cinema">{{track.artists[0].names}}</span>
+                            <span class="cinema">{{track.artists[0].name}}</span>
                         </div>
                     </div>
-                </div>
+                </a>
+
             </div>
         </div>
     </div>

@@ -9,13 +9,13 @@ angular.module('snapify')
         $stateProvider
             .state('login', {
                 templateUrl: "client/login/login.ng.html",
-                controller:'LoginController'
+                controller: 'LoginController'
             })
             .state('memberarea', {
                 url: '/',
                 abstract: true,
                 templateUrl: "client/memberarea/main.ng.html",
-                controller:'AppController',
+                controller: 'AppController',
                 resolve: {
                     "currentUser": ["$meteor", function ($meteor) {
                         return $meteor.requireUser();
@@ -35,6 +35,14 @@ angular.module('snapify')
             .state('memberarea.share.selectFriend', {
                 templateUrl: "client/memberarea/share/selectFriend.ng.html"
             })
+            .state('memberarea.share.link', {
+                templateUrl: "client/memberarea/share/link.ng.html"
+            })
+            .state('share', {
+                url: '/s/:ticket',
+                templateUrl: "client/share/public.ng.html",
+                controller: 'PublicController'
+            });
 
     }]).
     run(["$rootScope", "$state", function ($rootScope, $state) {
@@ -45,7 +53,6 @@ angular.module('snapify')
             if (error === "AUTH_REQUIRED") {
                 // It is better to use $state instead of $location. See Issue #283.
                 $state.go('login');
-
             }
         });
     }]);

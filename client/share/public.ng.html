@@ -1,0 +1,18 @@
+<div ng-controller="PlayController">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-offset-2 col-lg-8 "
+                 style="margin-top:15vh; background-color:rgba(230,230,230,0.3); color:#FFF">
+                <div class="text-center"
+                        >
+                    <h1 class="text-center">Your friend has sent you a song:</h1>
+                    <a href="#" ng-click="play(share[0])">
+                        <img ng-src="{{share[0].from.picture}}"
+                             style="width:200px;height:200px; border-radius:300px;">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div ng-include="'client/partials/playingsong.ng.html'" ng-show="playingsong"></div>
+</div>
